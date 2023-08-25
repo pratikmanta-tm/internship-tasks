@@ -1,0 +1,35 @@
+body {
+    font-family: Arial;
+    text-align: center;
+    padding: 0px;
+    margin: 0px;
+}
+
+header{
+    background-color: rgb(158, 62, 21);
+    margin: 0px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.eyvind {
+    background-color: darkcyan;
+    padding-top: 20px;
+    border-top: 1px solid red;
+}
+
+h1 {
+    background-color: rgb(158, 62, 21);
+    color: rgb(255, 255, 255);
+    font-family: "Josefin Sans", sans-serif;
+    text-align: center;
+    font-size: 4rem;
+}
+
+h3 {
+    background-color: rgb(158, 62, 21);
+    color: rgb(255, 255, 255);
+    font-family: Lugrasimo, cursive;
+    font-size: 1.5rem;
+}
+
