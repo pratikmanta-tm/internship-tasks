@@ -1,4 +1,91 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'Portico';
+    src: url('Portico.otf') format('opentype');
+    font-weight: 50;
+    font-size: normal;
+    font-style: normal;
+}
+
+
 body{
-    background-color: black;
-    color: aliceblue;
+    background-image: url(northern-lights.jpg) ;
+    background-size: cover ;
+    background-position: center;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+.wholePage {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.main-heading {
+    font-family: Portico;
+    color:rgb(153, 188, 177);
+    font-size: 3.5rem;
+}
+
+.subheading {
+    font-weight: 600;
+    font-size: 1.5rem;
+    padding-top: 20px;
+
+}
+
+.navbar {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 50px;
+    flex-wrap: wrap;
+    position: absolute;
+    top: 0;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+[class ^="box-"] {
+    height: 70px;
+    font-size: 12px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.box-1 {
+    flex-grow: 30;
+    justify-content: flex-start;
+    padding: 10px;
+}
+
+.box-2 {
+    flex-grow: 1 ;
+}
+
+.box-3 {
+    flex-grow: 1;
+}
+
+.box-4 {
+    flex-grow: 1 ;
+}
+
+.box-5 {
+    flex-grow: 1 ;
 }
