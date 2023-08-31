@@ -26,7 +26,9 @@ body{
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     align-items: center;
+    align-content: center;
     justify-content: center;
 }
 
@@ -50,12 +52,20 @@ body{
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    gap: 50px;
-    flex-wrap: wrap;
     position: absolute;
     top: 0;
     padding-left: 50px;
     padding-right: 50px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: white;
+    transition: all 0.50s ease;
+}
+
+.navbar a:hover{
+    color: rgb(153, 188, 177);
 }
 
 [class ^="box-"] {
@@ -67,25 +77,20 @@ body{
     align-items: center;
 }
 
+.boxcontainer{
+    display: flex;
+    gap: 30px;
+}
 
-.box-1 {
-    flex-grow: 30;
+.box-logo {
     justify-content: flex-start;
     padding: 10px;
+    color: white;
+    max-width: 80px;
+    margin-right: auto;
 }
 
-.box-2 {
-    flex-grow: 1 ;
-}
-
-.box-3 {
-    flex-grow: 1;
-}
-
-.box-4 {
-    flex-grow: 1 ;
-}
-
-.box-5 {
-    flex-grow: 1 ;
+#travel {
+    max-width: 100%;
+    max-height: 100%;
 }
