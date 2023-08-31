@@ -2,34 +2,47 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar{
+    display: grid;
+    background-color: rgb(35, 60, 83);
+    grid-template-columns: 1fr 1fr 1fr 70% 1fr 1fr;
+}
+
+.navbar_item {
+    place-self: center;
+    padding: 5px;
+}
+
+.navbar_item a {
+    color: white;
+    text-decoration: none;
+}
+
+#icon{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
 }
 
 .container{
     margin: 30px;
     display: grid;
-    grid-gap: 2rem;
-    grid-template-rows: repeat(3, 100px);
-    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 30px;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(5, 1fr);
 }
 
 [class ^="box-"] {
-    background-color: deeppink;
-    color: antiquewhite;
-    border-radius: 10px;
     text-align: center;
 }
 
 [class ^="box-"] img{
-    width: 300px;
-    height: 200px;
+    width: 270px;
+    height: 180px;
 
 }
 
-
-.box-2 {
-    background-image: url(diatom.jpg) ;
-    grid-row-start:    2;
-grid-row-end:      3;
-grid-column-start: 2;
-grid-column-end:   3;
-}
