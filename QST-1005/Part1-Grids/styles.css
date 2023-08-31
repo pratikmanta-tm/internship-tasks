@@ -30,10 +30,13 @@
 
 .container{
     margin: 30px;
+    margin-left: 20%;
+    margin-right: 20%;
     display: grid;
     grid-gap: 30px;
     grid-template-rows: repeat(3, 1fr);
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
 }
 
 [class ^="box-"] {
