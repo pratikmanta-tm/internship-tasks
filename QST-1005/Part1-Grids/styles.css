@@ -7,8 +7,10 @@
 
 .navbar{
     display: grid;
+    padding-left: 10px;
+    padding-right: 10px;
     background-color: rgb(35, 60, 83);
-    grid-template-columns: 1fr 1fr 1fr 70% 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr minmax(5px, 70%) minmax(70px, 1fr) 1fr;
 }
 
 .navbar_item {
@@ -21,6 +23,10 @@
     text-decoration: none;
 }
 
+/*.navbar_item a:active{
+    color: blue;
+}*/
+
 #icon{
     display: flex;
     flex-wrap: nowrap;
@@ -28,22 +34,40 @@
     align-items: center;
 }
 
+
+section {
+    display: grid;
+    place-items: center;
+}
+
+
 .container{
-   margin: 30px;
-    margin-left: 20%;
-    margin-right: 20%;
-    justify-self: center;
+    margin: 30px;
     display: grid;
     grid-gap: 30px;
-    grid-template-rows: repeat(3, 1fr);
-    grid-template-columns: repeat(3, 1fr);
-    justify-content: center;
+    place-content: center;
 }
 
 
 [class ^="box-"] img{
-    width: 270px;
-    height: 180px;
-
+    width: 100%;
+    max-width: 270px;
+    object-fit: contain;
 }
 
+
+@media (min-width: 1200px) {
+    .container{
+        grid-template-columns: repeat(4, 1fr);
+     }
+  }
+  @media (min-width: 769px) and (max-width: 1200px) {
+    .container{
+        grid-template-columns: repeat(3, 1fr);
+     }
+  }
+  @media (min-width: 470px) and (max-width: 768px) {
+    .container{
+        grid-template-columns: repeat(2, 1fr);
+     }
+  }
