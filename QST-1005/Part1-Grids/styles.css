@@ -29,9 +29,10 @@
 }
 
 .container{
-    margin: 30px;
+   margin: 30px;
     margin-left: 20%;
     margin-right: 20%;
+    justify-self: center;
     display: grid;
     grid-gap: 30px;
     grid-template-rows: repeat(3, 1fr);
@@ -39,9 +40,6 @@
     justify-content: center;
 }
 
-[class ^="box-"] {
-    text-align: center;
-}
 
 [class ^="box-"] img{
     width: 270px;
