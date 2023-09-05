@@ -36,12 +36,13 @@ body{
 .main-heading {
     font-family: Portico;
     color:rgb(153, 188, 177);
-    font-size: 3.5rem;
+    font-size: max(20px,5vw);
+
 }
 
 .subheading {
     font-weight: 600;
-    font-size: 1.5rem;
+    font-size: max(14px,2.5vw);
     padding-top: 20px;
 
 }
@@ -93,4 +94,24 @@ body{
 #travel {
     max-width: 100%;
     max-height: 100%;
+}
+
+@media (max-width: 769px) {
+    .navbar{
+        padding-left: 5px;
+        padding-right: 20px;
+    } 
+    .boxcontainer{
+        gap: 20px;
+    }
+}
+
+@media (max-width: 476px) {
+    .boxcontainer{
+        flex-direction: column;
+        align-items: flex-end;
+    }
+    .navbar{
+        padding-top: 20px;
+    }
 }
