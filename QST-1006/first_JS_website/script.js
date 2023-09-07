@@ -1,7 +1,5 @@
     const toggleButton = document.getElementsByClassName("toggle-button")[0];
+    const navlink = document.getElementsByClassName('navlink');
 
-    toggleButton.addEventListener('click', () => {
-        for(let i of document.getElementsByClassName('navlink') ){
-            i.classList.toggle('active'); 
-        }
-    })
+
+    toggleButton.addEventListener('click', ()=> Array.from(navlink).map(item => item.classList.toggle('active')));
