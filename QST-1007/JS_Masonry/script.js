@@ -1,6 +1,6 @@
+
 const toggleButton = document.getElementsByClassName("toggle-button")[0];
 const navlink = document.getElementsByClassName('navlink');
-
 
 toggleButton.addEventListener('click', ()=> Array.from(navlink).map(item => item.classList.toggle('active')));
 
@@ -54,8 +54,6 @@ function makeGrid(columns, posts){
             pic.src = post.image; 
             postDiv.appendChild(pic);
             columnDiv.appendChild(postDiv);
-
-            console.log(columnDiv);
         })
 
         container.appendChild(columnDiv);
@@ -64,41 +62,50 @@ function makeGrid(columns, posts){
 
 
 
+
 function checkScreen(){
 
-
+    const clientWidth = window.innerWidth;
     const checkMobile = window.matchMedia('screen and (max-width: 470px)');
     const checkTablet = window.matchMedia('screen and (min-width: 470px) and (max-width: 769px)');
     const checkSmallDesktop = window.matchMedia('screen and (min-width: 769px) and (max-width: 1200px)');
     const checkLargeDesktop = window.matchMedia('screen and (min-width: 1200px)');
-  
+
+    if(clientWidth <= 470)
+      makeGrid(1, posts);
+    else if (clientWidth <= 769)
+      makeGrid(2, posts);
+    else if (clientWidth <= 1200)
+      makeGrid(3, posts);
+    else
+      makeGrid(4, posts);
+
+
     checkMobile.addListener(function(e){
   
-      if(e.matches) {
+      if(e.matches)
         makeGrid(1, posts);
-      }
+      
     });
   
     checkTablet.addListener(function(e){
   
-      if(e.matches) {
+      if(e.matches) 
         makeGrid(2, posts);
-      }
+      
     });
   
     checkSmallDesktop.addListener(function(e){
   
-      if(e.matches) {
+      if(e.matches) 
         makeGrid(3, posts);
-      }
     });
 
     checkLargeDesktop.addListener(function(e){
   
-        if(e.matches) {
+        if(e.matches) 
             makeGrid(4, posts);
-        }
-      });
+    });
     
 }
 
