@@ -1,0 +1,38 @@
+
+body{
+    background-color: rgb(137, 185, 228);
+    font-family:'Courier New', Courier, monospace;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.board{
+    margin:auto;
+    border: 3px solid navy;
+    background-color: blue;
+    height: 540px;
+    width: 630px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tile {
+    width: 80px;
+    height: 80px;
+    margin: 5px;
+    border-radius: 50%;
+    background-color: white;
+}
+
+
+.player-one{
+    background-color: red;
+}
+
+.player-two{
+    background-color: yellow;
+}
