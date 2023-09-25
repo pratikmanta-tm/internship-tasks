@@ -59,29 +59,31 @@ function makeGrid(columns, posts){
 }
 
 
-let w = window.innerWidth;
+let prev = window.innerWidth;
 
-if(w <= 470)
+if(prev <= 470)
   makeGrid(1, posts);
-else if (w > 470 && w <= 769)
+else if (prev > 470 && prev <= 769)
   makeGrid(2, posts);
-else if (w > 769 && w <= 1200)
+else if (prev > 769 && prev <= 1200)
   makeGrid(3, posts);
-else if (w > 1200)
+else if (prev > 1200)
   makeGrid(4, posts);
 
 window.addEventListener('resize', () => {
 
   let w = window.innerWidth;
 
-  if(w <= 470)
+  if(w <= 470 && prev > 470)
     makeGrid(1, posts);
-  else if (w > 470 && w <= 769)
+  else if (w > 470 && w <= 769 && (prev <= 470 || prev > 769))
     makeGrid(2, posts);
-  else if (w > 769 && w <= 1200)
+  else if (w > 769 && w <= 1200 && (prev <= 769 || prev > 1200))
     makeGrid(3, posts);
-  else if (w > 1200)
+  else if (w > 1200 && prev <= 1200)
     makeGrid(4, posts);
+
+  prev = window.innerWidth;
 
 })
 
