@@ -2,6 +2,20 @@
 
 $(document).ready(function() {
     let grid = $('.product-grid');
+    let pageNoWrapper = $('#page-number-wrapper');
+    let searchCache = new Map();
+
+    let pageData = {
+        page: 1,
+        itemNos: 10
+    }
+
+    for (let i = 1; i <= $('.filter-items').length; i++) {
+        $(`#more-${i}`).click(function(){
+            $(`#slide-${i}`).slideToggle("slow");
+         })
+    }
+    
 
     async function getProducts(url) {
         try {
@@ -38,9 +52,39 @@ $(document).ready(function() {
         }
     }
 
+    function pagination(products){
+        let pageStart = (pageData.page - 1) * pageData.itemNos;
+        let pageEnd = pageStart + pageData.itemNos;
+        return products.slice(pageStart, pageEnd);
+    }
+
+    function pageButtons(n, products){
+        pageNoWrapper.html("")
+
+
+
+        let pageNos = Math.ceil(n/pageData.itemNos);
+        for (let i = 1; i <= pageNos ; i++) {
+            console.log('heheheh')
+            let pageButton = $('<button>').attr('value', i).addClass('page-button').text(i);
+            pageNoWrapper.append(pageButton);
+            if(i == pageData.page)
+                pageButton.css("color", "red");
+        }
+
+        $('.page-button').click(function(){
+            grid = grid.html("");
+            pageData.page = $(this).val();
+            displayProducts(products);
+        })
+    }
+
     function displayProducts(products) {
+
+       let finalproducts = pagination(products) 
+
         grid = grid.html("");
-        products.forEach(item => {
+        finalproducts.forEach(item => {
             
             let tile = $('<div>').addClass('product-container');
             let imagediv = $('<div>').addClass('imagediv');
@@ -68,6 +112,9 @@ $(document).ready(function() {
 
             grid.append(tile);
         });
+
+        pageButtons(products.length, products);
+
     }
 
     function debounce(searchInput, products, timeout = 1000) {
@@ -86,17 +133,21 @@ $(document).ready(function() {
 
         const searchInput = $('#search-box'); 
         
-        let query = searchInput.val();
+        let query = searchInput.val().toLowerCase().trim();
+
 
         if (query === '') {
             displayProducts(products);
-            console.log('d');
         } else {
 
-            query = query.toLowerCase().trim();
-            const filteredProducts = products.filter(product => product.title.toLowerCase().includes(query));
-            displayProducts(filteredProducts);
-            console.log('e');
+            if (searchCache.has(query)) {
+                displayProducts(searchCache.get(query));
+            } else {
+
+                const filteredProducts = products.filter(product => product.title.toLowerCase().includes(query));
+                searchCache.set(query, filteredProducts);
+                displayProducts(filteredProducts);
+            }
         }
 
     }
