@@ -7,7 +7,7 @@ $(document).ready(function() {
 
     let pageData = {
         page: 1,
-        itemNos: 10
+        itemNos: 9
     }
 
     for (let i = 1; i <= $('.filter-items').length; i++) {
@@ -20,20 +20,18 @@ $(document).ready(function() {
     async function getProducts(url) {
         try {
 
-            console.log('a');
-
             const resp = await fetch(url);
             let products = await resp.json();
-            console.log(products);
 
             let searchIcon = $('#search-icon'); 
             let searchInput = $('#search-box');
 
             searchInput.keyup(function (event) {
-                console.log('b');
+
                 if (event.keyCode === 13) {
                     getProducts('https://fakestoreapi.com/products');
                 }
+
             });
 
             searchIcon.on('click', function() {
@@ -56,27 +54,28 @@ $(document).ready(function() {
         let pageStart = (pageData.page - 1) * pageData.itemNos;
         let pageEnd = pageStart + pageData.itemNos;
         return products.slice(pageStart, pageEnd);
+        
     }
 
     function pageButtons(n, products){
-        pageNoWrapper.html("")
+        pageNoWrapper.html("");
 
+        if(n > pageData.itemNos) {
 
+            let pageNos = Math.ceil(n/pageData.itemNos);
+            for (let i = 1; i <= pageNos ; i++) {
+                let pageButton = $('<button>').attr('value', i).addClass('page-button').text(i);
+                pageNoWrapper.append(pageButton);
+                if(i == pageData.page)
+                    pageButton.css("color", "red");
+            }
 
-        let pageNos = Math.ceil(n/pageData.itemNos);
-        for (let i = 1; i <= pageNos ; i++) {
-            console.log('heheheh')
-            let pageButton = $('<button>').attr('value', i).addClass('page-button').text(i);
-            pageNoWrapper.append(pageButton);
-            if(i == pageData.page)
-                pageButton.css("color", "red");
+            $('.page-button').click(function(){
+                grid = grid.html("");
+                pageData.page = $(this).val();
+                displayProducts(products);
+            })
         }
-
-        $('.page-button').click(function(){
-            grid = grid.html("");
-            pageData.page = $(this).val();
-            displayProducts(products);
-        })
     }
 
     function displayProducts(products) {
@@ -85,7 +84,7 @@ $(document).ready(function() {
 
         grid = grid.html("");
         finalproducts.forEach(item => {
-            
+
             let tile = $('<div>').addClass('product-container');
             let imagediv = $('<div>').addClass('imagediv');
             let productimg = $('<img>').attr('src', item.image);
@@ -112,7 +111,7 @@ $(document).ready(function() {
 
             grid.append(tile);
         });
-
+        
         pageButtons(products.length, products);
 
     }
@@ -131,9 +130,9 @@ $(document).ready(function() {
 
     function searchFunction(products) {
 
-        const searchInput = $('#search-box'); 
-        
+        const searchInput = $('#search-box');   
         let query = searchInput.val().toLowerCase().trim();
+        pageData.page = 1;
 
 
         if (query === '') {
