@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="external/jquery/jquery-ui.min.css">
+    <script src="external/jquery/jquery.js"></script>
+    <script src="external/jquery/jquery-ui.min.js"></script>
     <script src="script.js" defer></script>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500&family=Poppins:wght@200;300;400;600;700&display=swap" rel="stylesheet">
@@ -11,128 +14,64 @@
 </head>
 <body>
 
-<div class="page-container">
-    <nav>
-        <div class="navbar">
-            <ul>
-                <li class="left-navbar-items"> <img src="assets/logo-color.svg" id="logo"> </li>
-                <li class="left-navbar-items">WOMEN</li>
-                <li class="left-navbar-items">MEN</li>
-                <li class="left-navbar-items">KIDS</li>
-                <li class="left-navbar-items">SPORTSWEAR</li>
-                <li class="left-navbar-items">BRANDS</li>
-                <li class="left-navbar-items">SWIMWEAR</li>
-                <li class="left-navbar-items">RUNNING</li>
-                <li class="left-navbar-items">SALE</li>
-                <li class="navbar-space"></li>
-                <li class="right-navbar-items"><img src="assets/map-pin-line.svg" height="20px"></li>
-                <li class="right-navbar-items"><img src="assets/user-3-line.svg" height="20px"></li>
-                <li class="right-navbar-items"><img src="assets/shopping-bag-line.svg" height="20px"></li>
-            </ul>
-        </div>
-        <div class="search-bar">
-            
-                <h4>What are you looking for?</h2>
-            
-             
-            <span> <input type="text" id="search-box"> <i id="search-icon"> <img src="assets/search-line.svg" height="20px"> </i> </span>
-
-        </div>
-    </nav>
-
-    <div class="content-container">
-        <aside>
-            <div class="sidenav-container">
-                <div class="sidenav">
-                    <ul class="sidenav-list">
-                        <li class="filter-items"><span>SPORT <img src="assets/add-line.svg" height=20px id="more-1"></span> 
-                            <div class="sidenav-wrapper" id="slide-1">
-                                <ul class="category-items" >
-                                    <li><input type="checkbox">   Basketball </li>
-                                    <li><input type="checkbox">   Cricket</li>
-                                    <li><input type="checkbox">   Footbal</li>
-                                    <li><input type="checkbox">   Golf</li>
-                                    <li><input type="checkbox">   Tennis</li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="filter-items"><span>BRAND <img src="assets/add-line.svg" height=20px id="more-2"></span>
-                            <div class="sidenav-wrapper" id="slide-2">
-                                <ul class="category-items" >
-                                    <li><input type="checkbox">   Basketball </li>
-                                    <li><input type="checkbox">   Cricket</li>
-                                    <li><input type="checkbox">   Footbal</li>
-                                    <li><input type="checkbox">   Golf</li>
-                                    <li><input type="checkbox">   Tennis</li>
-                                </ul>
-                            </div>
-                        </li>
-
-                        <li class="filter-items"><span>PRODUCT TYPE <img src="assets/add-line.svg" height=20px id="more-3"></span>
-                            <div class="sidenav-wrapper" id="slide-3">
-                                <ul class="category-items">
-                                    <li><input type="checkbox">   Basketball </li>
-                                    <li><input type="checkbox">   Cricket</li>
-                                    <li><input type="checkbox">   Footbal</li>
-                                    <li><input type="checkbox">   Golf</li>
-                                    <li><input type="checkbox">   Tennis</li>
-                                    <li><input type="checkbox">   haha</li>
-                                    <li><input type="checkbox">   hehe</li>
-                                    <li><input type="checkbox">   hoho</li>
-                                </ul>
-                            </div>
-                        </li>
-
-                        <li class="filter-items"><span>SIZE <img src="assets/add-line.svg" height=20px id="more-4"></span>
-                            <div class="sidenav-wrapper" id="slide-4">
-                                <ul class="category-items" >
-                                    <li><input type="checkbox">   Basketball </li>
-                                    <li><input type="checkbox">   Cricket</li>
-                                    <li><input type="checkbox">   Footbal</li>
-                                    <li><input type="checkbox">   Golf</li>
-                                    <li><input type="checkbox">   Tennis</li>
-                                </ul>
-                            </div>
-                        </li>
-
-                        <li class="filter-items"><span>PRICE <img src="assets/add-line.svg" height=20px id="more-5"></span>
-                            <div class="sidenav-wrapper" id="slide-5">
-                                <ul class="category-items" >
-                                    <li><input type="checkbox">   Basketball </li>
-                                    <li><input type="checkbox">   Cricket</li>
-                                    <li><input type="checkbox">   Footbal</li>
-                                    <li><input type="checkbox">   Golf</li>
-                                    <li><input type="checkbox">   Tennis</li>
-                                </ul>
-                            </div>
-                        </li>
-
-                        <li class="filter-items"><span>SALE  <img src="assets/add-line.svg" height=20px id="more-6"></span>
-                            <div class="sidenav-wrapper" id="slide-6">
-                                <ul class="category-items" >
-                                    <li><input type="checkbox">   Basketball </li>
-                                    <li><input type="checkbox">   Cricket</li>
-                                    <li><input type="checkbox">   Footbal</li>
-                                    <li><input type="checkbox">   Golf</li>
-                                    <li><input type="checkbox">   Tennis</li>
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </aside>
-
-        <main id="content-main">
-            <div class="grid-header"> display </div>
-            <div class="product-grid"></div>
-            <div id="page-number-wrapper"></div>
-        </main>
-
-    </div>
-
+<div class="navbar-menu">
+    <ul class="navbar-menu-list">
+        <img src="assets/close-line.svg" id="close-navbar" height="20px">
+    </ul>
 </div>
+
+<div class="page-container">
+        <nav>
+            <div class="navbar">
+                <ul>
+                    <li class="menu-toggle"> <img src="assets/menu-line.svg" id="hamburger-menu"> </li>
+                    <li class="header-logo"> <img src="assets/logo-color.svg" id="logo"> </li>
+                    <div class="left-navbar">
+                    </div>
+                    <li class="navbar-space"></li>
+                    <div class="right-navbar">
+                        <li class="right-navbar-items"><img src="assets/map-pin-line.svg" height="20px"></li>
+                        <li class="right-navbar-items"><img src="assets/user-3-line.svg" height="20px"></li>
+                        <li class="right-navbar-items"><img src="assets/shopping-bag-line.svg" height="20px"></li>
+                    </div>
     
+                </ul>
+            </div>
+            <div class="search-bar">
+    
+                    <h4>What are you looking for?</h4>
+    
+    
+                <span> <input type="text" id="search-box"> <i id="search-icon"> <img src="assets/search-line.svg" height="20px"> </i> </span>
+    
+            </div>
+        </nav>
+    
+        <div class="content-container">
+            <aside>
+                <div class="sidenav-container">
+                    <div class="sidenav">
+                         <ul class="sidenav-list">
+                        </ul>
+                    </div>
+                </div>
+            </aside>
+    
+            <main id="content-main">
+                <div class="grid-header">
+                    <div id="dis">Display: 10 items per page </div>
+                    <div id="emp"></div>
+                    <div id="hide"> Hide Filters</div>
+                    <div id="sort">Sort By</div>
+    
+                </div>
+                <div class="product-grid"></div>
+                <div id="page-number-wrapper"></div>
+            </main>
+    
+        </div>
+    
+</div>
     
 </body>
 </html>
