@@ -33,30 +33,53 @@ export default function App() {
 
   }, [])
 
+  useEffect(() => {
+
+
+
+  }, [])
+
   return(
-    <Page products={products} setProducts={setProducts} />
+    <Page products={products} />
   )
   
 }
 
 
 
-function Page( {products, setProducts} ) {
+function Page( {products} ) {
 
   const [searchInput, setSearchInput] = useState("");
   const [newProducts, setNewProducts] = useState([]);
-  // const [pages, setPages] = useState(10);
+
+  useEffect(() => {
+    setNewProducts(products);
+  }, [products]);
+
+  const [pages, setPages] = useState(10);
+
+  useEffect(() => {
+
+  } , [])
   
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (searchInput.length > 2) {
+        handleSearch(searchInput);
+      } else {
+        setNewProducts(products);
+      }
+      }, 1000);
+
+    return () => clearTimeout(timer)
+  }, [searchInput])
+
+
+
   function handleSearch (query) {
-    let timer;       
-    clearTimeout(timer);
-    timer = setTimeout(() => {
-      if (query.length > 2) {
-        if (query)
-          setNewProducts(products.filter(item => item.title.toLowerCase().includes(query)));
-      } 
-    }, 1000);
-    
+    if (query)
+      setNewProducts(products.filter(item => item.title.toLowerCase().includes(query)));
   }
 
   const [isActive, setIsActive] = useState(false);
@@ -74,13 +97,36 @@ function Page( {products, setProducts} ) {
     <NavbarMenu isActive={isActive} toggleFunction={toggleClass}/>
     <div className={`page-container ${isActive ? 'blur' : ''}`}>
       <Navbar toggleFunction={toggleClass} />
-      <SearchBar searchInput={searchInput} setSearchInput={setSearchInput} handleSearch={handleSearch} />
-      <ContentContainer products = {searchInput ? newProducts : products} />
+      <SearchBar setSearchInput={setSearchInput} />
+      <ContentContainer products = {newProducts} />
     </div>
     </>
 
   );
 }
+
+
+// function searchFunction(products) {
+
+//   const searchInput = $('#search-box');   
+//   let query = searchInput.val().toLowerCase().trim();
+//   pageData.page = 1;
+
+//   if (query === '') {
+//       displayProducts(products);
+//   } else {
+
+//       if (searchCache.has(query)) {
+//           displayProducts(searchCache.get(query));
+//       } else {
+
+//           const filteredProducts = products.filter(product => product.title.toLowerCase().includes(query) || product.category.toLowerCase().includes(query));
+//           searchCache.set(query, filteredProducts);
+//           displayProducts(filteredProducts);
+//       }
+//   }
+
+// }
 
 
 function NavbarMenu({isActive, toggleFunction}) {
@@ -133,7 +179,7 @@ function NavItems({ classname }) {
 }
 
 
-function SearchBar( {searchInput, setSearchInput, handleSearch} ) {
+function SearchBar( {setSearchInput} ) {
   return(
     <div className="search-bar">
     
@@ -141,7 +187,6 @@ function SearchBar( {searchInput, setSearchInput, handleSearch} ) {
   
       <span> <input type="text" id="search-box" onInput={e => {
         setSearchInput(e.target.value);
-        handleSearch(e.target.value); 
         }} /> 
         <i id="search-icon"> <img src={searchline} height="20px" /> </i> 
         </span>
