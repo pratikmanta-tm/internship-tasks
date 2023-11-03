@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import NavbarMenu from './NavbarMenu';
 import Navbar from './Navbar';
 import ContentContainer from './ContentContainer';
-import SearchBar from './SearchBar'
+import SearchBar from './SearchBar';
 
 
 

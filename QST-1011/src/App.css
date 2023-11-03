@@ -121,6 +121,7 @@ body {
 
 
 .sidenav-container{
+  height: fit-content;
   display: block;
   overflow-y: scroll;
   width: 23vw;
@@ -137,6 +138,7 @@ body {
   align-items: center;
   justify-content: space-between;
 }
+
 
 .sidenav-list{
   list-style: none;
@@ -172,8 +174,14 @@ body {
   cursor: pointer;
 }
 
-[id ^="slide-"] {
-  display: none;
+.sidenav-wrapper {
+  max-height: 0;
+  transition: max-height 1s;
+  overflow: hidden;
+}
+
+.sidenav-wrapper.active{
+  max-height: 300px;
 }
 
 .grid-header {
@@ -222,7 +230,7 @@ a {
 }
 
 hr {
- height: 0.5px;
+  height: 0.5px;
   border-color: none;
   background-color: rgb(255, 255, 255);
 }
@@ -272,8 +280,15 @@ hr {
       place-content: center;
   }
 
+  .navbar-menu{
+    display: block;
+    transform: translateX(-100%);
+    transition: 0.5s ease-in-out;
+  }
+
   .navbar-menu.active {
     display: block;
+    transform: translateX(0%);
   }
 
   .header-logo {

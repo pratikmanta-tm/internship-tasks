@@ -1,11 +1,13 @@
 // import { useEffect } from 'react';
 import addline from '../assets/add-line.svg';
+import { useState } from 'react';
 
 
 
 
 export default function Filters( {item, index, setCategories, setPrices, categories, prices} ) {
 
+    
 
     function checkedFilter(check, fil, i) {
 
@@ -35,9 +37,11 @@ export default function Filters( {item, index, setCategories, setPrices, categor
         }
     }
 
+    const [slide, setSlide] = useState(false);
+
     return(
-      <li key={`filterli${index}`} className='filter-items'> <span> {item.filter.toUpperCase()} <img src={addline} alt='' height="20px" id={`more-${index}`} /></span> 
-        <div key={`lidiv${index}`} className='sidenav-wrapper'>
+      <li key={`filterli${index}`} className='filter-items'> <span> {item.filter.toUpperCase()} <img src={addline} onClick={() => setSlide(!slide)} alt='' height="20px" id={`more-${index}` } /></span> 
+        <div key={`lidiv${index}`} className={`sidenav-wrapper ${slide ? 'active' : ''}`} >
           <ul key={`divlist${index}`} className='category-items'>
             {item.items.map((filteritem, index) => (
               <FilterList key={index} item={filteritem} checkedFilter={checkedFilter} i={index} />
@@ -48,7 +52,6 @@ export default function Filters( {item, index, setCategories, setPrices, categor
     )
 }
   
-//id={`slide-${index}`}
   
 function FilterList({item, checkedFilter, i}) {
 

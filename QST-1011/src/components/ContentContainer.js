@@ -9,7 +9,9 @@ export default function ContentContainer( {products, page, setPage} ) {
   let [filteredProducts, setFilteredProducts] = useState(products);
 
   useEffect(() => {
-    applyFilters(products);
+    setTimeout(() => {
+      applyFilters(products);
+    }, 1000);
   }, [products, categories, prices]);
 
   function applyFilters(products) {
@@ -54,7 +56,7 @@ function ContentGrid( {products, page, setPage} ) {
           <div id="dis">Display: 10 items per page </div> 
           <div id="emp"></div>
           <div id="hide"> Hide Filters</div>
-          <div id="sort">Sort By</div>
+          {/* <div id="sort">Sort By</div> */}
         </div>
         <Grid products={finalProducts}></Grid>
         <PageButton setFinalProducts={setFinalProducts} products={products} page={page} setPage={setPage} itemNos={itemNos} />
