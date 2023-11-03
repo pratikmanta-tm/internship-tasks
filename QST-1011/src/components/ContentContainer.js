@@ -9,9 +9,10 @@ export default function ContentContainer( {products, page, setPage} ) {
   let [filteredProducts, setFilteredProducts] = useState(products);
 
   useEffect(() => {
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       applyFilters(products);
     }, 1000);
+    return () => clearTimeout(timer)
   }, [products, categories, prices]);
 
   function applyFilters(products) {
