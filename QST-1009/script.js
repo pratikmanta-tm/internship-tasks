@@ -48,28 +48,12 @@
 
         async function getProducts(url) {
             try {
+                console.log('def');
                 const resp = await fetch(url);
                 let products = await resp.json();
 
-                let searchIcon = $('#search-icon'); 
-                let searchInput = $('#search-box');
 
-                searchInput.keyup(function (event) {
-
-                    if (event.keyCode === 13) {
-                        getProducts(url);
-                    }
-
-                });
-
-                searchIcon.on('click', function() {
-                    getProducts(url);
-                });
-                
-                searchInput.on('input', function(){
-                    searchInput = $('#search-box');
-                    debounce(searchInput, products);
-                })
+                handleSearch(products);
 
                 searchFunction(products);
 
@@ -78,6 +62,31 @@
             }
         }
 
+        function handleSearch(products) {
+
+            let searchIcon = $('#search-icon'); 
+            let searchInput = $('#search-box');
+
+            searchInput.keyup(function (event) {
+                if (event.keyCode === 13) {
+                    console.log('abc');
+                    searchFunction(products);
+                }
+            });
+
+            searchIcon.on('click', function() {
+                searchFunction(products);
+            });
+            
+            searchInput.on('input', function(){
+                searchInput = $('#search-box');
+                if(searchInput.val().length > 2)
+                    debounce(products);
+                else
+                    displayProducts (products);
+            })
+               
+        }
 
         function pagination(products){
             let pageStart = (pageData.page - 1) * pageData.itemNos;
@@ -149,16 +158,10 @@
 
         }
 
-        function debounce(searchInput, products, timeout = 1000) {
+        function debounce(products) {
             let timer;
-            
-                clearTimeout(timer);
-                timer = setTimeout(() => {
-                    if (searchInput.val().length > 2) {
-                        searchFunction(products);
-                    } else 
-                        displayProducts(products);
-                }, timeout);
+            clearTimeout(timer);
+            timer = setTimeout(searchFunction(products), 1000);
         }
 
         function searchFunction(products) {
@@ -224,7 +227,7 @@
 
         function buildSideNav(){
             $.getJSON("filters.json", function(json) {
-                let filters = json;
+                let filters = json;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
 
                 filters.map((item)=> {
                     let filterli = $('<li>').addClass('filter-items').html(`<span>${item.filter.toUpperCase()} <img src="assets/add-line.svg" height=20px id="more-${filters.indexOf(item)}"></span>`);
@@ -272,7 +275,7 @@
                     $(`#more-${filters.indexOf(item)}`).click(function(){
                         $(`#slide-${filters.indexOf(item)}`).slideToggle("slow");
                     })
-                })``
+                })
 
                 
             });
