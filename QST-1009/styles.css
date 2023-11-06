@@ -9,21 +9,33 @@ body {
 }
 
 
-
 #logo {
     min-width: 100px;
-    min-height: 15px;
+    min-height: 17px;
+    max-height: 25px;
 }
 
 .navbar ul{
+    position: relative;
     display: flex;
     justify-content: space-around;
     align-items: center;
     list-style: none;
-    padding: 15px;
+    padding: 15px 30px 15px 30px;
 }
 
-.left-navbar-items, .right-navbar-items {
+#hamburger-menu {
+    display: none;
+}
+
+.left-navbar, .right-navbar{
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    padding-left: 20px;
+}
+
+.header-logo, .left-navbar-items, .right-navbar-items {
     flex-grow: 1;
     display: flex;
     place-content: center;
@@ -31,6 +43,41 @@ body {
 
 .navbar-space {
     flex-grow: 10;
+}
+
+.page-container{
+    z-index: 0;
+    transition: ease 0.5s;
+}
+
+.blur{
+    filter: blur(5px);
+    pointer-events: none;
+}
+
+.navbar-menu{
+    display: none;
+    position: fixed;
+    float: left;
+    height: 100%;
+    width: 300px;
+    max-width: 100%;
+    z-index: 2;
+    background-color: white;
+    padding: 20px;
+    padding-left: 30px;
+}
+
+.navbar-menu-list{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    list-style: none;
+    gap: 15px;
+}
+
+#close-navbar{
+    align-self: flex-end;
 }
 
 
@@ -70,7 +117,6 @@ body {
 }
 
 
-
 .sidenav-container{
     display: block;
     overflow-y: scroll;
@@ -105,11 +151,23 @@ body {
 .category-items {
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(2, auto);
     gap: 5px;
     padding: 15px 7px 0 7px;
 }
 
+.category-items li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.category-items input {
+    margin-left: 10px;
+}
+
+[id ^="more-"]{
+    cursor: pointer;
+}
 
 [id ^="slide-"] {
     display: none;
@@ -118,8 +176,14 @@ body {
 .grid-header {
     display: flex;
     padding: 10px;
-    justify-content: flex-end;
+    gap: 20px;
+    justify-content: space-between;
 }
+
+#emp {
+    flex: 20;
+}
+
 
 .product-grid{
     display: grid;
@@ -196,11 +260,29 @@ hr {
     .category-items {
         grid-template-columns: 1fr;
     }
+    .left-navbar{
+        display: none;
+    }
+    #hamburger-menu {
+        height: 25px;
+        display: flex;
+        place-content: center;
+    }
+    .header-logo {
+        position: absolute;
+        justify-self: center;
+    }
+    .navbar-space{
+        flex: 20;
+    }
 }
 
 @media (max-width: 768px) {
     .sidenav-container {
         display: none;
+    }
+    .search-bar span{
+        width: 50%;
     }
 }
 
@@ -212,8 +294,21 @@ hr {
 }
 
 @media (max-width: 470px) {
+    .header-logo {
+        position: relative;
+        padding-left: 7px;
+    }
     .product-grid{
         grid-template-columns: repeat(1, 1fr);
+    }
+    .navbar ul{
+        padding: 15px;
+    }
+    .search-bar h4{
+        display: none;
+    }
+    .search-bar span{
+        width: 70%;
     }
 }
 

@@ -1,0 +1,35 @@
+[
+    {
+        "header" : "Women",
+        "href" : "#"
+    } ,
+    {
+        "header" : "Men",
+        "href" : "#"
+    } ,
+    {
+        "header" : "Kids",
+        "href" : "#"
+    } ,
+    {
+        "header" : "Sportswear",
+        "href" : "#"
+    } ,
+    {
+        "header" : "Brands",
+        "href" : "#"
+    } ,
+    {
+        "header" : "Swimwear",
+        "href" : "#"
+    } ,
+    {
+        "header" : "Running",
+        "href" : "#"
+    } ,
+    {
+        "header" : "Sale",
+        "href" : "#"
+    }
+
+]
